@@ -8,6 +8,8 @@
 #include <stdlib.h>
 #include <iostream>
 #include <vector>
+#include <cmath>
+#include "../Bubble/Bubble.h"
 
 using std::vector;
 
