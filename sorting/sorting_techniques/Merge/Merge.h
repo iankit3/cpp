@@ -13,6 +13,6 @@
 
 using std::vector;
 
-vector<int>* merge_sort(vector<int> *vec);
+vector<int> merge_sort(vector<int> vec);
 
 #endif /* SORTING_TECHNIQUES_MERGE_MERGE_H_ */
