@@ -9,6 +9,7 @@
 #include "sorting_techniques/Selection/Selection.h"
 #include "sorting_techniques/Insertion/Insertion.h"
 #include "sorting_techniques/Merge/Merge.h"
+#include "sorting_techniques/Quick/Quick.h"
 
 using std::cout, std::vector, std::endl;
 
@@ -20,7 +21,8 @@ int main() {
   // vector<int>* vec_ptr = bubble_sort(&vec);
   // vector<int>* vec_ptr = selection_sort(&vec);
   // vector<int>* vec_ptr = insertion_sort(&vec);
-  vector<int> vec_ptr = merge_sort(vec);
+  // vector<int> vec_ptr = merge_sort(vec);
+  vector<int> vec_ptr = quick_sort(vec);
 
   print_vec(vec_ptr);
   return 0;
