@@ -9,46 +9,40 @@ using std::cout , std::endl , std::vector, std::floor;
 // #define NULL __null : in c++
 #define __null 0
 
-void swap(int x, int y) {
-    int temp = x;
-    x = y;
-    y = temp;
+void swap(int* x, int* y) {
+    int temp = *x;
+    *x = *y;
+    *y = temp;
 }
 
-int pivot_index = 0;
-vector<int> quick_sort(vector<int> unsorted_vec) {
-    int i = 1;
-    if (unsorted_vec.size() < 2) {
-        return unsorted_vec;
-    }
-    // NOT WORKING
-    // cout << "Pivot at " << pivot_index << " ,is "
-    //     << unsorted_vec.at(pivot_index) << endl;
-    auto size = unsorted_vec.size();
-    for (int j=0; j < size; j++) {
-
-        int temp = unsorted_vec.at(j);
-        if (unsorted_vec.at(j) < unsorted_vec.at(pivot_index)) {
-            unsorted_vec.erase(unsorted_vec.begin()+j);
-            unsorted_vec.insert(unsorted_vec.begin()+pivot_index,temp);
-        } else {
-            unsorted_vec.erase(unsorted_vec.begin()+j);
-            unsorted_vec.insert(unsorted_vec.begin()+pivot_index,temp);
+int partition(vector<int>* vec, int start, int end) {
+    int pivot_index = start;
+    int pivot_elem = vec->at(pivot_index);
+    for (int i = start+1; i < end; i++) {
+        cout << vec->at(i) << " < " << vec->at(pivot_index);
+        cout << " ? " << (vec->at(i) < vec->at(pivot_index)) << endl;
+        if (vec->at(i) < pivot_elem) {
+            int temp = vec->at(i);
+            vec->at(i) = vec->at(pivot_index);
+            vec->at(pivot_index) = temp;
+            // swap(vec[i], vec[pivot_index]);
+            pivot_index += 1;
         }
     }
-    // swap(unsorted_vec.at(0), unsorted_vec.at(i-1));
-    // pivot_index = i-1;
+    // swap(vec, start, pivot_index-1);
+    int temp = vec->at(start);
+    vec->at(start) = vec->at(pivot_index);
+    vec->at(pivot_index) = temp;
+    cout << "Pivot index " << pivot_index << endl;
+    print_vec(*vec);
 
+    return pivot_index;
+}
 
-    print_vec(unsorted_vec);
-
-    vector<int> lt_pivot(unsorted_vec.begin(),
-        unsorted_vec.begin()+pivot_index);
-    vector<int> rt_pivot(unsorted_vec.begin()+pivot_index,
-        unsorted_vec.end());
-
-    quick_sort(lt_pivot);
-    quick_sort(rt_pivot);
-
-    return unsorted_vec;
+void quick_sort(vector<int> unsorted_vec, int start, int end) {
+    if (start < end) {
+        int pivot_index = partition(&unsorted_vec, start, end);
+        quick_sort(unsorted_vec, start, pivot_index);
+        quick_sort(unsorted_vec, pivot_index, end);
+    }
 }
