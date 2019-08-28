@@ -22,7 +22,7 @@ int main() {
   // vector<int>* vec_ptr = selection_sort(&vec);
   // vector<int>* vec_ptr = insertion_sort(&vec);
   // vector<int> vec_ptr = merge_sort(vec);
-  quick_sort(vec, 0, vec.size());
+  quick_sort(vec, 0, vec.size()-1);
 
   // print_vec(vec_ptr);
   print_vec(vec);
