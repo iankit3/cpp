@@ -13,6 +13,6 @@
 
 using std::vector;
 
-void quick_sort(vector<int> vec, int start, int end);
+void quick_sort(vector<int>* vec, int start, int end);
 
 #endif /* SORTING_TECHNIQUES_QUICK_QUICK_H_ */
