@@ -14,3 +14,6 @@
                 -
 -DP
 -Discrete Math 101
+
+#CPP BUILD
+find . -iname "*\.cpp" -printf " %p" | xargs g++
